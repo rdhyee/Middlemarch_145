@@ -1,0 +1,39 @@
+_repo: Middlemarch_145
+creator:
+  author:
+    agent_name: Eliot, George
+    aliases:
+    - Lewes, M. E. (Marian Evans)
+    - Evans, Mary Anne
+    - Evans, Marian
+    - Lewes, Marian Evans
+    - Cross, Marian Evans
+    - Cross, Mary Ann
+    birthdate: 1819
+    deathdate: 1880
+    gutenberg_agent_id: '90'
+    url: http://www.gutenberg.org/2009/agents/90
+    wikipedia: http://en.wikipedia.org/wiki/George_Eliot
+gutenberg_bookshelf:
+- Historical Fiction
+- Best Books Ever Listings
+gutenberg_issued: '1994-07-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '145'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- '!lcsh:England -- Fiction'
+- '!lcc:PR'
+- '!lcsh:Didactic fiction'
+- '!lcsh:Love stories'
+- '!lcsh:City and town life -- Fiction'
+- '!lcsh:Young women -- Fiction'
+- '!lcsh:Married people -- Fiction'
+- '!lcsh:Bildungsromans'
+- '!lcsh:Domestic fiction'
+title: Middlemarch
+url: http://www.gutenberg.org/ebooks/145
