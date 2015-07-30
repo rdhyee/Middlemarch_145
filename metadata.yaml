@@ -3,12 +3,12 @@ creator:
   author:
     agent_name: Eliot, George
     aliases:
+    - Evans, Marian
     - Lewes, M. E. (Marian Evans)
     - Evans, Mary Anne
-    - Evans, Marian
     - Lewes, Marian Evans
-    - Cross, Marian Evans
     - Cross, Mary Ann
+    - Cross, Marian Evans
     birthdate: 1819
     deathdate: 1880
     gutenberg_agent_id: '90'
@@ -26,14 +26,14 @@ publisher: Project Gutenberg
 rights: Public domain in the USA.
 rights_url: http://creativecommons.org/about/pdm
 subjects:
-- '!lcsh:England -- Fiction'
+- '!lcsh:Domestic fiction'
 - '!lcc:PR'
-- '!lcsh:Didactic fiction'
-- '!lcsh:Love stories'
-- '!lcsh:City and town life -- Fiction'
 - '!lcsh:Young women -- Fiction'
+- '!lcsh:City and town life -- Fiction'
 - '!lcsh:Married people -- Fiction'
 - '!lcsh:Bildungsromans'
-- '!lcsh:Domestic fiction'
+- '!lcsh:Love stories'
+- '!lcsh:Didactic fiction'
+- '!lcsh:England -- Fiction'
 title: Middlemarch
 url: http://www.gutenberg.org/ebooks/145
