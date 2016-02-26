@@ -1,5 +1,5 @@
 _repo: Middlemarch_145
-_version: 0.0.2
+_version: 0.1.0
 covers:
 - attribution: Ed Gaither - Modern Electrographic, 2015
   cover_type: original
@@ -43,5 +43,6 @@ subjects:
 - '!lcsh: Love stories'
 - '!lcsh: Didactic fiction'
 - '!lcsh: Domestic fiction'
+- GITenberg
 title: Middlemarch
 url: http://www.gutenberg.org/ebooks/145
