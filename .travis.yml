@@ -3,33 +3,23 @@ dist: trusty
 language: ruby
 
 before_install:
-- gem install asciidoctor -v 1.5.2 
+before_install:
+- gem install asciidoctor -v 1.5.2
 - gem install tilt
-- sudo pip install git+https://github.com/rdhyee/ebooklib.git
+- sudo pip install git+https://github.com/rdhyee/gitberg.git
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+git://github.com/rdhyee/pg-epubmaker.git
 script:
 - VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
 - git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
-
 - sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
-- asciidoctor -a toc,idprefix=xx_,version=$VERSION -b xhtml5 -T ./asciidoctor-htmlbook/htmlbook-autogen/
-  -d book book.asciidoc -o book.html
-- git clone https://github.com/gitenberg-dev/HTMLBook
 
-# make book.html available to jinja2 environment by putting it into templates
-- cp book.html asciidoctor-htmlbook/gitberg-machine/templates/
-
-- /usr/bin/python asciidoctor-htmlbook/gitberg-machine/machine.py -o . -m metadata.yaml book.html
-- xsltproc -stringparam external.assets.list " " ./HTMLBook/htmlbook-xsl/epub.xsl book.html
-- cp ./HTMLBook/stylesheets/epub/epub.css OEBPS
-- if [ -e cover.jpg ]; then cp cover.jpg OEBPS/cover.jpg; fi
-# look for first images directory and one found, copy over to ./OEBPS
-- find . -name images -type d | head -n 1 | xargs -I {} mv {} ./OEBPS/
-- zip -rX book.epub mimetype
-- zip -rX book.epub OEBPS/ META-INF/
-- if test -d "OEBPS/images/"; then zip -rX book.epub OEBPS/images/ ;fi
-- mv book.epub Middlemarch.epub
-- ebook-convert Middlemarch.epub Middlemarch.mobi
-- xvfb-run ebook-convert Middlemarch.epub Middlemarch.pdf
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
 branches:
   only:
   - master
@@ -46,14 +36,26 @@ deploy:
   api_key:
     secure: Up19bhFfwE9yXjyaxNcRwwh/ZuHsfkOckih0mkISDZ4dd/BuxqW4oRuRjrxp6bwIc/8lLwix13CgX4GS6Wmx48hZHV2wvE/d1uYMiZU8ML4t266Mqr2v4BpT+K2HTgR7VqnjJ+Qee+LC9O/XMg8+rsrKqUZKREHGxW9tA9dbi0G+Km+a+i0PHSJ0ckwQzS8HithYPffJQlnygvv6SL3TeiPjY9OoYJ9i5gIdnpotiGNr0+sw4xddxFzFBRCXF0EjFSVZSL4NgivGC1LqtqIM+kNARatnkSBtBPekxx7Ue2/5rfh5V4wid/qNP3mzllj9ziIRRSQ+UVzxqdsobHuXIos4xfHS3IYaOb1i6vUuZMAH3gyCxe498n7youfLCSVRRvBL4oMiMYoANRvNNdKzXExugrwojs59/hZuniPGWP/XYLV5eRBV8xTNOBdEeB6yQ+Q1jQ6I3ejBVvImlkwiwYmA3/PdG8NgPxBv3wzrwXAMhynhb9mQdJg3LFdgffMIx+fUczBormZZYlPpPuJtQNGhfkVKe/gOQWi+jAut7tx3PL9kEVJaetEdtbD9nu7Q4izY2GXQZaSk1e9HwtxKCdZhtuB3zkVNSvlSICJ8haOlN0KLV2o9HiDrBe36b7+luRHcBEa+gNPAAJGdPogRREnG1o89koC9/h9+CNLHWHM=
   file:
-    - Middlemarch.epub
-    - Middlemarch.mobi
-    - Middlemarch.pdf
+    - book.epub
+    - book.mobi
+    - book.pdf
   "on":
-    repo: GITenberg/Middlemarch_145
+    repo: rdhyee/Middlemarch_145
 addons:
   apt:
     packages:
     - xsltproc
     - xvfb
     - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
